@@ -1,0 +1,61 @@
+package miu.edu.lab1.service.Impl;
+
+import lombok.RequiredArgsConstructor;
+import miu.edu.lab1.entity.Post;
+import miu.edu.lab1.entity.dto.PostDto;
+import miu.edu.lab1.repo.PostRepo;
+import miu.edu.lab1.service.PostService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+
+
+@Service
+@RequiredArgsConstructor
+public class PostServiceImpl implements PostService {
+
+   @Autowired
+   PostRepo postRepo;
+
+    @Override
+    public List<Post> findAll() {
+        return postRepo.findAll();
+    }
+
+
+    public PostDto findById(long id){
+        var post = postRepo.getById(id);
+
+        PostDto postDto=new PostDto();
+        postDto.setId(post.getId());
+        postDto.setTitle(post.getTitle());
+        postDto.setAuthor(post.getAuthor());
+        return postDto;
+      // return  modelmapper.map(productRepo.getById(id),ProductDto.class);
+    }
+
+    @Override
+    public void save(Post p) {
+        postRepo.save(p);
+    }
+
+    @Override
+    public void delete(int id) {
+        postRepo.delete(id);
+    }
+
+    @Override
+    public void update(long id, PostDto p) {
+       //productRepo.update(id, modelMapper.map(p, Product.class));
+        postRepo.update(id,p);
+    }
+
+}
+
