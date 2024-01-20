@@ -53,15 +53,12 @@ public class UserServiceImpl implements UserService {
        List<User> users=userRepo.findAll();
        List<User> resUser=new ArrayList<>();
 
-       if(users!=null){
-           for(User u:users){
-               if(u.getPosts().size()>count){
-                   resUser.add(u);
-               }
-           }
-           return resUser;
-       }
-      return null;
+        for (User u : users) {
+            if (u.getPosts().size() > count) {
+                resUser.add(u);
+            }
+        }
+        return resUser;
     }
 
     @Override
@@ -73,15 +70,12 @@ public class UserServiceImpl implements UserService {
     public List<Post> searchPostByTitle(String title) {
       List<Post> posts= postRepo.findAll();
       List<Post> resPosts=new ArrayList<>();
-      if(posts!=null){
-          for(Post p:posts){
-              if(p.getTitle().contains(title)){
-                  resPosts.add(p);
-              }
-          }
-          return resPosts;
-      }
-        return null;
+        for (Post p : posts) {
+            if (p.getTitle().contains(title)) {
+                resPosts.add(p);
+            }
+        }
+        return resPosts;
     }
 
 }
