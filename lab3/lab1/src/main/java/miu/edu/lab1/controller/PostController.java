@@ -31,5 +31,10 @@ public class PostController {
     }
 
 
-
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/byPostTitle/{title}")
+    /* public List<User> searchUserByTitle(@RequestParam("postByTitle") String title){*/
+    public List<Post> searchPostByTitle(@PathVariable("title") String title){
+        return postService.searchPostByTitle(title);
+    }
 }

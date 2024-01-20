@@ -53,12 +53,7 @@ public class UserController {
         userService.deleteUser(u);
    }
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/byPostTitle")
-    /* public List<User> searchUserByTitle(@RequestParam("postByTitle") String title){*/
-    public List<Post> searchPostByTitle(@PathVariable("title") String title){
-        return userService.searchPostByTitle(title);
-    }
+
 }
 
 

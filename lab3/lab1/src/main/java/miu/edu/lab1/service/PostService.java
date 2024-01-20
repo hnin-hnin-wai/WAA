@@ -11,5 +11,7 @@ public interface PostService {
 
     public void save(PostDto p);
 
+    public List<Post> searchPostByTitle(String title);
+
 
 }

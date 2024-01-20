@@ -20,6 +20,5 @@ public interface UserService {
 
     public void deleteUser(ReqUser u);
 
-    public List<Post> searchPostByTitle(String title);
 
 }

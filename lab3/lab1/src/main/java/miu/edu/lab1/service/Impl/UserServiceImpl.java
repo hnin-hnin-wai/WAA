@@ -66,17 +66,7 @@ public class UserServiceImpl implements UserService {
         userRepo.delete(userRepo.findById(u.getId()).get());
     }
 
-    @Override
-    public List<Post> searchPostByTitle(String title) {
-      List<Post> posts= postRepo.findAll();
-      List<Post> resPosts=new ArrayList<>();
-        for (Post p : posts) {
-            if (p.getTitle().contains(title)) {
-                resPosts.add(p);
-            }
-        }
-        return resPosts;
-    }
+
 
 }
 

@@ -8,7 +8,11 @@ import miu.edu.lab1.repo.PostRepo;
 import miu.edu.lab1.service.PostService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,7 +56,17 @@ public class PostServiceImpl implements PostService {
         postRepo.save(modelMapper.map(p,Post.class));
     }
 
-
+    @Override
+    public List<Post> searchPostByTitle(String title) {
+        List<Post> posts= postRepo.findAll();
+        List<Post> resPosts=new ArrayList<>();
+        for (Post p : posts) {
+            if (p.getTitle().contains(title)) {
+                resPosts.add(p);
+            }
+        }
+        return resPosts;
+    }
 
 }
 
