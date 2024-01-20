@@ -70,7 +70,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> searchUserByTitle(String title) {
-       return listMapper.mapList(userRepo.searchUserByTitle(title),new User());
+    public List<Post> searchPostByTitle(String title) {
+      List<Post> posts= postRepo.findAll();
+      List<Post> resPosts=new ArrayList<>();
+      if(posts!=null){
+          for(Post p:posts){
+              if(p.getTitle().contains(title)){
+                  resPosts.add(p);
+              }
+          }
+          return resPosts;
+      }
+        return null;
     }
+
 }
+

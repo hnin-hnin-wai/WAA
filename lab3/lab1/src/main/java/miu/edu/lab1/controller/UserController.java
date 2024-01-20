@@ -17,6 +17,9 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    PostService postService;
     @GetMapping
     public List<User> findAll(){
         return userService.findAll();
@@ -50,11 +53,12 @@ public class UserController {
         userService.deleteUser(u);
    }
 
-   @ResponseStatus(HttpStatus.OK)
-   @GetMapping("/byPostTitle")
-  /* public List<User> searchUserByTitle(@RequestParam("postByTitle") String title){*/
-   public List<User> searchUserByTitle(@PathVariable("title") String title){
-        return userService.searchUserByTitle(title);
-   }
-
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/byPostTitle")
+    /* public List<User> searchUserByTitle(@RequestParam("postByTitle") String title){*/
+    public List<Post> searchPostByTitle(@PathVariable("title") String title){
+        return userService.searchPostByTitle(title);
+    }
 }
+
+
