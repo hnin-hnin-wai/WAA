@@ -3,6 +3,7 @@ package miu.edu.lab1.aspect;
 
 import miu.edu.lab1.entity.ExceptionLogger;
 import miu.edu.lab1.entity.Logger;
+import miu.edu.lab1.service.ExceptionLoggerService;
 import miu.edu.lab1.service.LoggerService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -22,6 +23,9 @@ public class LoggerAspect {
     @Autowired
     LoggerService loggerService;
 
+    @Autowired
+    ExceptionLoggerService exceptionLoggerService;
+
     @Pointcut("@annotation(miu.edu.lab1.aspect.annotation.LogMe))")
     public void LogMeAnnotation(){}
 
@@ -35,10 +39,17 @@ public class LoggerAspect {
         loggerService.saveLogger(log);
     }
 
-    @AfterThrowing("logMe()")
-    public void logAfterThrowing(JoinPoint joinPoint) {
+  /*  @AfterThrowing(value="logMe()",throwing = "exception")
+    public void logAfterThrowing(JoinPoint joinPoint,Exception exception) {
         //System.out.println("Log after throwing the method: " + joinPoint.getSignature().getName());
-        //UBiDiProps exception;
-        //ExceptionLogger el=new ExceptionLogger(LocalDate.now(), LocalTime.now(),"admin",joinPoint.getSignature().getName(),exception.getClass().getName());
+        ExceptionLogger el=new ExceptionLogger(LocalDate.now(), LocalTime.now(),"admin",joinPoint.getSignature().getName(),exception.getClass().getName());
+        exceptionLoggerService.saveExceptionLogger(el);
+    }*/
+
+    @AfterThrowing(value ="logMe()", throwing = "exception")
+    public void logAfterThrow(JoinPoint joinPoint,Exception exception) {
+        System.out.println("after throw");
+        ExceptionLogger exceptionLogger = new ExceptionLogger(LocalDate.now(), LocalTime.now(),"admin",joinPoint.getSignature().getName(),exception.getClass().getName());
+        exceptionLoggerService.saveExceptionLogger(exceptionLogger);
     }
 }
