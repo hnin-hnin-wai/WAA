@@ -12,7 +12,7 @@ public class LoggerServiceImpl implements LoggerService {
     @Autowired
     LoggerRepo loggerRepo;
     @Override
-    public void saveLog(Logger l) {
+    public void saveLogger(Logger l) {
         loggerRepo.save(l);
     }
 }

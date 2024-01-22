@@ -25,4 +25,11 @@ public class Logger {
     private LocalTime transactionTime;
     private String principle;
     private String operation;
+
+    public Logger(LocalDate now, LocalTime now1, String admin, String name) {
+        this.transactionDate=now;
+        this.transactionTime=now1;
+        this.principle=admin;
+        this.operation=name;
+    }
 }
