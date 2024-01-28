@@ -24,8 +24,8 @@ public class SecurityConfig {
     private final UserDetailsService userDetailsService;
     private final JwtFilter jwtFilter;
 
-    String[] roles = {"CLIENT","ADMIN"}; // You can make this a call from the DB
-//  String [] roles = {"CLIENT"}; // Try this :)
+  //  String[] roles = {"CLIENT","ADMIN"}; // You can make this a call from the DB
+ String [] roles = {"CLIENT"}; // Try this :)
 
 
     @Bean

@@ -11,5 +11,5 @@ public interface UserRepo extends JpaRepository<User,Long> {
             "u from User u join Post p where p.title=:title")
     public List<User> searchUserByTitle(String title);
 
-
+    User findByEmail(String email);
 }

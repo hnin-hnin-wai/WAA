@@ -1,3 +1,28 @@
+INSERT INTO users (email, firstname, lastname, password)
+VALUES ('uinan@miu.edu', 'umur', 'inan', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2'); --123
+
+INSERT INTO users (email, firstname, lastname, password)
+VALUES ('john@miu.edu', 'john', 'doe', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2'); --123
+
+INSERT INTO users (email, firstname, lastname, password)
+VALUES ('dean@miu.edu', 'Dean', 'Altarawneh', '$2a$12$IKEQb00u5QpZMx4v5zMweu.3wrq0pS7XLCHO4yHZ.BW/yvWu1feo2'); --123
+
+INSERT INTO role (role)
+VALUES ('ADMIN');
+INSERT INTO role (role)
+VALUES ('CLIENT');
+
+
+INSERT INTO users_roles (user_id, roles_id)
+VALUES (1, 1);
+INSERT INTO users_roles (user_id, roles_id)
+VALUES (2, 1);
+INSERT INTO users_roles (user_id, roles_id)
+VALUES (3, 2);
+
+--drop table users;
+
+
 /*-- users
 
 INSERT INTO users(name)
