@@ -38,7 +38,7 @@ const Dashboard = () => {
   }
   //console.log(postState);
 
-  const [selectedState, setSelectedState] = useState(0);
+  const [selectedState, setSelectedState] = useState(0);//Id
   
   const [selectTitle,setSelectTitle]=useState("");
   const [selectAuthor,setSelectAuthor]=useState("");
